@@ -1,0 +1,14 @@
+{
+  "name": "base-converter",
+  "description": "Simple math tool for base convertion : decimal from/to any base",
+  "version": "1.0.0",
+  "repository": "http://github.com/naholyr/node-base-converter.git",
+  "author": "Nicolas Chambrier <naholyr@gmail.com>",
+  "main": "base-converter",
+  "directories": {
+    "lib": "."
+  },
+  "engines": {
+    "node": "*"
+  }
+}
