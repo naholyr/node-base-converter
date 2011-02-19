@@ -18,7 +18,7 @@ Example
 Methods
 -------
 
-Predefined bases (2, 8, 16, 62):
+Predefined bases (2, 8, 16, 36, 62):
 
 * decToBin(n)
 * decToHex(n)
@@ -36,9 +36,24 @@ Using your own custom base:
 * decToGeneric(n, alphabet)
 * genericToDec(n, alphabet)
 
+Where 'alphabet' can be:
+
+* an integer between 2 and 36 (native conversion), or 62.
+* a string, containing all your symbols (one symbol = one character). 
+
 Example with custom base:
 
     var bc = require('base-converter')
     console.log(bc.decToGeneric(359461, 'AbcGHiuRSt'));
     
     // Expected output : 'GitHub'genericToDec('GitHub', base));
+
+Performance
+-----------
+
+Since version `1.1.0`, when a base between 2 and 36 is used, we fallback to native Javascript way of converting bases:
+
+* decimal to base: (number).toString(base)
+* base to decimal: parseInt(string, base)
+
+This should ensure best performance in any case.

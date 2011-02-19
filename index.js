@@ -1,16 +1,26 @@
+var sys = require("sys");
+
+function ConversionError(msg) {
+	Error.call(this, msg);
+	Error.captureStackTrace(this, arguments.callee);
+}
+sys.inherits(ConversionError, Error);
+
+exports.ConversionError = ConversionError;
+
 function getAlphabet(b) {
-	if (b == 2) {
-		b = '01';
-	} else if (b == 8) {
-		b = '01234567';
-	} else if (b == 16) {
-		b = '0123456789ABCDEF';
-	} else if (b == 36) {
-		b = '0123456789abcdefghijklmnopqrstuvwxyz';
+	if (typeof b == 'string') {
+		if (b.length == 0) {
+			throw new ConversionError("Empty alphabet");
+		}
+		return b;
+	} else if (b <= 36) {
+		// This case does not exist, we should have used native conversion
+		throw new ConversionError("Unexpected call to getAlphabet(" + n + ")");
 	} else if (b == 62) {
 		b = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	} else if (typeof b == 'number') {
-		throw 'Unknown numeric base, provide alphabet';
+		throw new ConversionError("Unknown numeric base, provide alphabet");
 	}
 
 	return b;
@@ -18,7 +28,11 @@ function getAlphabet(b) {
 
 exports.decToGeneric = function(n, b) {
 	if (typeof n != 'number') {
-		throw 'Expected valid number';
+		throw new ConversionError("Expected valid number");
+	}
+	if (typeof b == 'number' && b > 1 && b <= 36) {
+		// Fallback to native base conversion
+		return n.toString(b);
 	}
 	b = getAlphabet(b);
 	var result = '';
@@ -54,6 +68,10 @@ exports.decTo62 = function(n) {
 
 exports.genericToDec = function(n, b) {
 	n = n.toString();
+	if (typeof b == 'number' && b > 1 && b <= 36) {
+		// Fallback to native base conversion
+		return parseInt(n, b);
+	}
 	b = getAlphabet(b);
 	var cache_pos = {};
 	var bLen = b.length;
