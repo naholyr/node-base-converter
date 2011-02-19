@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "repository": "http://github.com/naholyr/node-base-converter.git",
   "author": "Nicolas Chambrier <naholyr@gmail.com>",
-  "main": "base-converter",
+  "main": "index",
   "directories": {
     "lib": "."
   },
