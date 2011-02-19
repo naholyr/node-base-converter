@@ -23,10 +23,12 @@ Predefined bases (2, 8, 16, 62):
 * decToBin(n)
 * decToHex(n)
 * decToOct(n)
+* decTo36(n)
 * decTo62(n)
 * binToDec(n)
 * hexToDec(n)
 * octToDec(n)
+* _36ToDec(n)
 * _62ToDec(n)
 
 Using your own custom base:
