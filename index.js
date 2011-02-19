@@ -5,6 +5,8 @@ function getAlphabet(b) {
 		b = '01234567';
 	} else if (b == 16) {
 		b = '0123456789ABCDEF';
+	} else if (b == 36) {
+		b = '0123456789abcdefghijklmnopqrstuvwxyz';
 	} else if (b == 62) {
 		b = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	} else if (typeof b == 'number') {
@@ -42,6 +44,10 @@ exports.decToOct = function(n) {
 	return this.decToGeneric(n, 8);
 }
 
+exports.decTo36 = function(n) {
+	return this.decToGeneric(n, 36);
+}
+
 exports.decTo62 = function(n) {
 	return this.decToGeneric(n, 62);
 }
@@ -74,6 +80,10 @@ exports.hexToDec = function(n) {
 
 exports.octToDec = function(n) {
 	return this.genericToDec(n, 8);
+}
+
+exports._36ToDec = function(n) {
+	return this.genericToDec(n, 36);
 }
 
 exports._62ToDec = function(n) {
