@@ -73,14 +73,18 @@ Test.prototype.test = function(test, a, b, comment) {
 }
 
 Test.prototype.finish = function() {
+	var result = true;
 	if (this.nb_tests != this.nb_expected) {
 		err('Error: ' + this.nb_tests + ' tests ran (' + (this.nb_tests - this.nb_fails) + ' successfully), while ' + this.nb_expected + ' were expected.', this.colorize);
+		result = false;
 	} else if (this.nb_fails == 0) {
 		success('All ' + this.nb_expected + ' tests ran successfully.', this.colorize);
 	}
 	if (this.nb_fails > 0) {
 		err(this.nb_fails + ' on ' + this.nb_tests + ' failed.', this.colorize);
+		result = false;
 	}
+	return result;
 }
 
 module.exports = Test;

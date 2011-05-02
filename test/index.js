@@ -81,5 +81,4 @@ t.test('throws', function() { base.decToGeneric(37, ''); }, base.ConversionError
 // -- Finished tests
 
 
-t.finish();
-
+t.finish() && process.exit(0) || process.exit(1);
