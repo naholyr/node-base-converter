@@ -1,4 +1,6 @@
-var assert = require('assert'), sys = require('sys');
+var assert = require('assert'), 
+
+util = require('util');
 
 var max_length = 80;
 
@@ -15,21 +17,21 @@ function info(msg, color) {
 	if (color) {
 		msg = "\x1B[0;37m" + msg + "\x1B[0m";
 	}
-	sys.puts(msg);
+	util.puts(msg);
 }
 function err(msg, color) {
 	msg = cut(msg);
 	if (color) {
 		msg = "\x1B[1;31m" + msg + "\x1B[0m";
 	}
-	sys.puts(msg);
+	util.puts(msg);
 }
 function success(msg, color) {
 	msg = cut(msg);
 	if (color) {
 		msg = "\x1B[1;32m" + msg + "\x1B[0m";
 	}
-	sys.puts(msg);
+	util.puts(msg);
 }
 
 function pad(str, len) {
