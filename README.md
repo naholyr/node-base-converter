@@ -51,7 +51,8 @@ Example with custom base:
     var bc = require('base-converter')
     console.log(bc.decToGeneric(359461, 'AbcGHiuRSt'));
     
-    // Expected output : 'GitHub'genericToDec('GitHub', base));
+    // Expected output : 'GitHub'
+    // bc.genericToDec('GitHub', base)) will return 359461 of course
 
 Performance
 -----------
