@@ -1,7 +1,5 @@
-Base Converter 
+Base Converter [![Build Status](https://secure.travis-ci.org/naholyr/node-base-converter.png)](http://travis-ci.org/naholyr/node-base-converter)
 ==============
-
-Current build status: [![Build Status](https://secure.travis-ci.org/naholyr/node-base-converter.png)](http://travis-ci.org/naholyr/node-base-converter)
 
 Installation
 ------------
